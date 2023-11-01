@@ -9,5 +9,5 @@ public class HoaxCreatorApplication {
     public static void main(String[] args) {
         SpringApplication.run(HoaxCreatorApplication.class, args);
     }
-//asd
+
 }
