@@ -1,22 +1,39 @@
 package com.example.hoax.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "kullanici-listesi")
+@Table(name = "kullanici-listesi", uniqueConstraints = @UniqueConstraint(columnNames = {"mail"}))
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-    @NotBlank
+
     String username;
-    @NotBlank
     String mail;
     String password;
+    boolean active;
+    String activationToken;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getActivationToken() {
+        return activationToken;
+    }
+
+    public void setActivationToken(String activationToken) {
+        this.activationToken = activationToken;
+    }
 
     public String getUsername() {
         return username;
